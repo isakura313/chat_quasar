@@ -1,0 +1,13 @@
+.q-message-text--received {
+  background-color: $chat-pink !important;
+}
+.q-message-text--received:last-child:before {
+  border-bottom-color: $chat-pink;
+}
+
+.q-message-text--sent {
+  background-color: $chat-blue !important;
+}
+.q-message-text--sent:last-child:before {
+  border-bottom-color: $chat-blue;
+}
