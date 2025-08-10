@@ -1,8 +1,13 @@
-FROM node:lts-alpine AS build
+# ---------- build ----------
+FROM node:20-alpine AS build
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN npm i
+COPY quasar.config.* ./
+COPY index.html ./
+
+
+RUN npm ci || npm i
 
 COPY . .
 
@@ -15,6 +20,4 @@ FROM nginx:1.25-alpine
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/spa /usr/share/nginx/html
 EXPOSE 80
-
-# простой healthcheck
 HEALTHCHECK CMD wget -qO- http://localhost/ || exit 1

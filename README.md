@@ -36,9 +36,7 @@ quasar build
 pnpm run build
 ```
 
-### Customize the configuration
-
-### Start by docker compose with mock up container
+### Start by docker compose with mockup container
 
 ```bash
 docker compose up --build -d
